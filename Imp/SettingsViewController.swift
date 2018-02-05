@@ -38,18 +38,22 @@ class SettingsViewController: NSViewController {
             let shouldIgnoreOwnHeader = sender.state == NSOnState ? false : true
             self.settings.set(shouldIgnoreOwnHeader, forKey: Constants.settings.ignoreOwnHeader)
         }
+        
         if sender == self.separatedFrameworksCheckbox {
             let shouldIgnoreFrameworks = sender.state == NSOnState ? false : true
             self.settings.set(shouldIgnoreFrameworks, forKey: Constants.settings.ignoreFrameworks)
         }
+        
         if sender == self.removeDuplicatesCheckbox {
             let shouldIgnoreDuplicates = sender.state == NSOnState ? false : true
             self.settings.set(shouldIgnoreDuplicates, forKey: Constants.settings.ignoreDuplicates)
         }
+        
         if sender == self.separateCategoriesCheckBox {
             let shouldSeparateCategories = sender.state == NSOnState ? false : true
             self.settings.set(shouldSeparateCategories, forKey: Constants.settings.ignoreCategorySeparation)
         }
+        
         self.settings.synchronize()
     }
     

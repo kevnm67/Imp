@@ -75,7 +75,7 @@ extension SourceEditorCommand {
                             let header = sortedLines[index]
                             sortedLines.remove(at: index)
                             sortedLines.insert(header, at: 0)
-                            sortedLines.insert("\n\n//Classes", at: 1)
+                            sortedLines.insert("\n", at: 1)
                             break
                         }
                     }
@@ -83,19 +83,26 @@ extension SourceEditorCommand {
             }
         }
         
-        if self.shouldSeparateFrameworks() {
-            for (index, line) in sortedLines.enumerated() {
-                if line.hasPrefix(importCommandObjc) && line.contains("<") {
-                    sortedLines.insert("\n\n//Frameworks", at: index)
-                    break
-                }
-            }
-        }
+        var finishedFrameworks = false
+        var finishedCategories = false
         
-        if self.shouldSeparateCategories() {
+        if self.shouldSeparateFrameworks() || self.shouldSeparateCategories() {
             for (index, line) in sortedLines.enumerated() {
-                if line.hasPrefix(importCommandObjc) && line.contains("+") {
-                    sortedLines.insert("\n\n//Categories", at: index)
+                if !line.hasPrefix(importCommandObjc) {
+                    continue
+                }
+                
+                if self.shouldSeparateFrameworks() && !finishedFrameworks && line.contains("<") {
+                    sortedLines.insert("\n", at: index)
+                    finishedFrameworks = true
+                }
+                
+                if self.shouldSeparateCategories() && !finishedCategories && line.contains("+") {
+                    sortedLines.insert("\n", at: index)
+                    finishedCategories = true
+                }
+                
+                if finishedCategories && finishedFrameworks {
                     break
                 }
             }

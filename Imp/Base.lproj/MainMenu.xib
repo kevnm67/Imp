@@ -69,18 +69,16 @@
         <window title="Imp" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="1132" y="966" width="265" height="152"/>
+            <rect key="contentRect" x="1132" y="966" width="265" height="195"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <value key="minSize" type="size" width="265" height="152"/>
-            <value key="maxSize" type="size" width="265" height="152"/>
-            <value key="minFullScreenContentSize" type="size" width="265" height="152"/>
-            <value key="maxFullScreenContentSize" type="size" width="265" height="156"/>
+            <value key="minSize" type="size" width="265" height="195"/>
+            <value key="minFullScreenContentSize" type="size" width="265" height="195"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ" userLabel="Settings View">
-                <rect key="frame" x="0.0" y="0.0" width="265" height="152"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="265" height="195"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hAx-TD-KzV">
-                        <rect key="frame" x="18" y="110" width="126" height="22"/>
+                        <rect key="frame" x="18" y="153" width="126" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="😈 Hi, human!" id="xO4-as-Yyh">
                             <font key="font" metaFont="systemBold" size="18"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -88,10 +86,10 @@
                         </textFieldCell>
                     </textField>
                     <stackView distribution="fillEqually" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-f8-Vba">
-                        <rect key="frame" x="20" y="20" width="147" height="80"/>
+                        <rect key="frame" x="20" y="20" width="147" height="123"/>
                         <subviews>
                             <button verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="xwS-oj-HWC">
-                                <rect key="frame" x="-2" y="64" width="138" height="18"/>
+                                <rect key="frame" x="-2" y="96" width="138" height="29"/>
                                 <buttonCell key="cell" type="check" title="Own header on top" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eMo-it-sGM">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -101,7 +99,7 @@
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="Umd-Kj-Tep">
-                                <rect key="frame" x="-2" y="42" width="151" height="18"/>
+                                <rect key="frame" x="-2" y="64" width="151" height="28"/>
                                 <buttonCell key="cell" type="check" title="Separate frameworks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4pK-dy-Gm0">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -111,14 +109,14 @@
                                 </connections>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="UhQ-Kj-KWF">
-                                <rect key="frame" x="-2" y="20" width="137" height="18"/>
+                                <rect key="frame" x="-2" y="31" width="137" height="29"/>
                                 <buttonCell key="cell" type="check" title="Remove duplicates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S1Z-Kh-TGq">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="wCQ-lp-Lc8" userLabel="Separate Categories">
-                                <rect key="frame" x="-2" y="-2" width="146" height="18"/>
+                                <rect key="frame" x="-2" y="-2" width="146" height="29"/>
                                 <buttonCell key="cell" type="check" title="Separate Categories" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Uox-Te-jEj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -149,7 +147,7 @@
                     <constraint firstItem="Dd5-f8-Vba" firstAttribute="leading" secondItem="hAx-TD-KzV" secondAttribute="leading" id="tJv-h6-VbI"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="24.5" y="-200"/>
+            <point key="canvasLocation" x="24.5" y="-178.5"/>
         </window>
     </objects>
 </document>
