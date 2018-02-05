@@ -15,6 +15,7 @@ class SettingsViewController: NSViewController {
     @IBOutlet weak var ownHeaderCheckbox: NSButton!
     @IBOutlet weak var separatedFrameworksCheckbox: NSButton!
     @IBOutlet weak var removeDuplicatesCheckbox: NSButton!
+    @IBOutlet weak var separateCategoriesCheckBox: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,9 @@ class SettingsViewController: NSViewController {
         
         let removesDuplicates = !self.settings.bool(forKey: Constants.settings.ignoreDuplicates)
         self.removeDuplicatesCheckbox.state = removesDuplicates ? NSOnState : NSOffState
+        
+        let separateCategories = !self.settings.bool(forKey: Constants.settings.ignoreCategorySeparation)
+        self.separateCategoriesCheckBox.state = separateCategories ? NSOnState : NSOffState
     }
     
     @IBAction func checkboxClicked(_ sender: NSButton) {
@@ -41,6 +45,10 @@ class SettingsViewController: NSViewController {
         if sender == self.removeDuplicatesCheckbox {
             let shouldIgnoreDuplicates = sender.state == NSOnState ? false : true
             self.settings.set(shouldIgnoreDuplicates, forKey: Constants.settings.ignoreDuplicates)
+        }
+        if sender == self.separateCategoriesCheckBox {
+            let shouldSeparateCategories = sender.state == NSOnState ? false : true
+            self.settings.set(shouldSeparateCategories, forKey: Constants.settings.ignoreCategorySeparation)
         }
         self.settings.synchronize()
     }

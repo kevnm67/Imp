@@ -64,7 +64,9 @@ extension SourceEditorCommand {
         // Own header to top logic
         if !self.isSwiftFile && self.shouldPutOwnHeaderOnTop() {
             if let className = self.getFileClass(in: text.copy() as! NSArray) {
+              
                 let classExtractionRegex = "(?<=.\").*(?=\\.h\")"
+                
                 for (index, line) in sortedLines.enumerated() {
                     let matches = line.matches(for: classExtractionRegex)
                     if matches.count > 0 {
@@ -73,7 +75,7 @@ extension SourceEditorCommand {
                             let header = sortedLines[index]
                             sortedLines.remove(at: index)
                             sortedLines.insert(header, at: 0)
-                            sortedLines.insert("\n", at: 1)
+                            sortedLines.insert("\n\n//Classes", at: 1)
                             break
                         }
                     }
@@ -84,7 +86,16 @@ extension SourceEditorCommand {
         if self.shouldSeparateFrameworks() {
             for (index, line) in sortedLines.enumerated() {
                 if line.hasPrefix(importCommandObjc) && line.contains("<") {
-                    sortedLines.insert("\n", at: index)
+                    sortedLines.insert("\n\n//Frameworks", at: index)
+                    break
+                }
+            }
+        }
+        
+        if self.shouldSeparateCategories() {
+            for (index, line) in sortedLines.enumerated() {
+                if line.hasPrefix(importCommandObjc) && line.contains("+") {
+                    sortedLines.insert("\n\n//Categories", at: index)
                     break
                 }
             }
@@ -109,6 +120,10 @@ extension SourceEditorCommand {
     
     fileprivate func shouldRemoveDuplicates() -> Bool {
         return !self.settings.bool(forKey: Constants.settings.ignoreDuplicates)
+    }
+    
+    fileprivate func shouldSeparateCategories() -> Bool {
+        return !self.settings.bool(forKey: Constants.settings.ignoreCategorySeparation)
     }
     
     fileprivate func getFileClass(in text: NSArray) -> String? {

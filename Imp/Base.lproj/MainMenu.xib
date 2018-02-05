@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -60,6 +61,7 @@
             <connections>
                 <outlet property="ownHeaderCheckbox" destination="xwS-oj-HWC" id="e6x-dc-WnT"/>
                 <outlet property="removeDuplicatesCheckbox" destination="UhQ-Kj-KWF" id="9w3-I8-DZU"/>
+                <outlet property="separateCategoriesCheckBox" destination="wCQ-lp-Lc8" id="o3w-sN-UjK"/>
                 <outlet property="separatedFrameworksCheckbox" destination="Umd-Kj-Tep" id="2fR-ea-56Y"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="Rhk-Pp-y6S"/>
             </connections>
@@ -67,54 +69,87 @@
         <window title="Imp" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="265" height="134"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="contentRect" x="1132" y="966" width="265" height="152"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <value key="minSize" type="size" width="265" height="152"/>
+            <value key="maxSize" type="size" width="265" height="152"/>
+            <value key="minFullScreenContentSize" type="size" width="265" height="152"/>
+            <value key="maxFullScreenContentSize" type="size" width="265" height="156"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ" userLabel="Settings View">
-                <rect key="frame" x="0.0" y="0.0" width="265" height="134"/>
+                <rect key="frame" x="0.0" y="0.0" width="265" height="152"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hAx-TD-KzV">
-                        <rect key="frame" x="18" y="90" width="207" height="24"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hAx-TD-KzV">
+                        <rect key="frame" x="18" y="110" width="126" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="😈 Hi, human!" id="xO4-as-Yyh">
                             <font key="font" metaFont="systemBold" size="18"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xwS-oj-HWC">
-                        <rect key="frame" x="18" y="62" width="207" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Own header on top" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eMo-it-sGM">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkboxClicked:" target="ygd-ZH-cXh" id="kOA-4e-Lye"/>
-                        </connections>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UhQ-Kj-KWF">
-                        <rect key="frame" x="18" y="18" width="229" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Remove duplicates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S1Z-Kh-TGq">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umd-Kj-Tep">
-                        <rect key="frame" x="18" y="42" width="229" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Separate frameworks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4pK-dy-Gm0">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="checkboxClicked:" target="ygd-ZH-cXh" id="mIH-3I-gKN"/>
-                        </connections>
-                    </button>
+                    <stackView distribution="fillEqually" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-f8-Vba">
+                        <rect key="frame" x="20" y="20" width="147" height="80"/>
+                        <subviews>
+                            <button verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="xwS-oj-HWC">
+                                <rect key="frame" x="-2" y="64" width="138" height="18"/>
+                                <buttonCell key="cell" type="check" title="Own header on top" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eMo-it-sGM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkboxClicked:" target="ygd-ZH-cXh" id="kOA-4e-Lye"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="Umd-Kj-Tep">
+                                <rect key="frame" x="-2" y="42" width="151" height="18"/>
+                                <buttonCell key="cell" type="check" title="Separate frameworks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4pK-dy-Gm0">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkboxClicked:" target="ygd-ZH-cXh" id="mIH-3I-gKN"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="UhQ-Kj-KWF">
+                                <rect key="frame" x="-2" y="20" width="137" height="18"/>
+                                <buttonCell key="cell" type="check" title="Remove duplicates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S1Z-Kh-TGq">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="wCQ-lp-Lc8" userLabel="Separate Categories">
+                                <rect key="frame" x="-2" y="-2" width="146" height="18"/>
+                                <buttonCell key="cell" type="check" title="Separate Categories" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Uox-Te-jEj">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="hAx-TD-KzV" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="2vQ-J5-prr"/>
+                    <constraint firstItem="hAx-TD-KzV" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="3zf-9x-D4Y"/>
+                    <constraint firstAttribute="bottom" secondItem="Dd5-f8-Vba" secondAttribute="bottom" priority="500" constant="20" id="JZe-WJ-fXV"/>
+                    <constraint firstAttribute="trailing" secondItem="Dd5-f8-Vba" secondAttribute="trailing" priority="250" constant="98" id="W7P-jk-luf"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hAx-TD-KzV" secondAttribute="trailing" id="eyo-UX-95U"/>
+                    <constraint firstItem="Dd5-f8-Vba" firstAttribute="top" secondItem="hAx-TD-KzV" secondAttribute="bottom" constant="10" id="kSz-Th-fKH"/>
+                    <constraint firstItem="Dd5-f8-Vba" firstAttribute="leading" secondItem="hAx-TD-KzV" secondAttribute="leading" id="tJv-h6-VbI"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="24.5" y="-209"/>
+            <point key="canvasLocation" x="24.5" y="-200"/>
         </window>
     </objects>
 </document>
